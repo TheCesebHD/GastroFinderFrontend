@@ -1,0 +1,15 @@
+<form [formGroup]="form" (submit)="submit()">
+    <mat-form-field>
+        <input matInput formControlName="name" type="text" placeholder="Name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput formControlName="address" type="text" placeholder="Addresse" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput formControlName="phoneNumber" type="text" placeholder="phoneNumber" required>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="form.invalid" type="submit">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</form>

@@ -1,0 +1,20 @@
+<form [formGroup]="form" (submit)="submit()">
+    <br>
+    <mat-form-field>
+        <input matInput formControlName="name" type="text" placeholder="Name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput formControlName="email" type="email" placeholder="Email Addresse" required>
+        <mat-error *ngIf="email?.invalid && email?.touched">Invalid email address</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput formControlName="password" type="password" placeholder="Passwort" required>
+        <mat-hint align="end">Password must be at least 8 characters long</mat-hint>
+        <mat-error *ngIf="password?.invalid && password?.touched">Password is too short</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button [disabled]="form.invalid" type="submit" (click)="submit">SUBMIT</button>
+    <span>{{error}}</span>
+</form>

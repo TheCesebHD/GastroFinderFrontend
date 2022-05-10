@@ -1,0 +1,46 @@
+<div>
+    <div class="wrapper">
+        <h2>Details</h2>
+        <p><strong>Name: </strong>{{restaurant.name}}</p>
+        <p><strong>Adresse: </strong>{{restaurant.address}}</p>
+        <p><strong>Telefonnummer: </strong>{{restaurant.phoneNumber}}</p>
+        <button (click)="showEditRestaurantComponent()">Bearbeiten</button>
+        <app-edit-restaurant [restaurant]="restaurant" (onSubmit)="hideEditRestaurantComponent()" *ngIf="showEditRestaurant"></app-edit-restaurant>
+    </div>
+
+    <div class="wrapper">
+        <h2>Menü</h2>
+        <input [(ngModel)]="filter" placeholder="Name">
+        <mat-card *ngFor="let d of dishes | dishFilter: filter" style="margin: 3px;">
+            <mat-card-title>{{d.name}}</mat-card-title>
+            <mat-card-actions>
+                <button mat-button (click)="showEditDishComponentEditMode(d)">bearbeiten</button>
+                <button mat-button (click)="deactivateDish(d)">deaktivieren</button>
+            </mat-card-actions>
+        </mat-card>
+
+        <button (click)="showEditDishComponent()">gericht hinzufügen</button>
+
+        <app-edit-dish [restaurantID]="restaurant.id" [dish]="dish" (onSubmit)="hideEditDishComponent()" *ngIf="showEditDish"></app-edit-dish>
+    </div>
+
+    <div class="wrapper">
+        <h2>Offene Bestellungen</h2>
+        <mat-card *ngFor="let o of activeOrders" style="margin: 3px;">
+            <div *ngFor="let d of o.dishes">
+                <mat-card-title>{{d.amount}}x {{d.dish.name}}</mat-card-title>
+            </div>
+            <mat-card-subtitle *ngIf="o.comment">Anmerkung: {{o.comment}}</mat-card-subtitle>
+            <mat-card-subtitle>{{o.price}}€</mat-card-subtitle>
+            <mat-card-actions>
+                <button mat-button (click)="markOrderAsCompleted(o)">Als erledigt markieren</button>
+                <button mat-button>Bestellung abbrechen</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <div>
+        <button mat-button (click)="showOrderHistory()">Bestellungshistorie anzeigen</button>
+        <app-orderview [restaurantID]="restaurant.id" (onSubmit)="hideOrderHistory()" *ngIf="showViewOrder"></app-orderview>
+    </div>
+</div>

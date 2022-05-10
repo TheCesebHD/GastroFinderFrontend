@@ -1,0 +1,18 @@
+<nav id="masthead">
+    <ul id="main-navigation" class="navigation">
+        <li class="nav-item"><a routerLink="/">home</a></li>
+        <li class="nav-item"><a routerLink="/restaurants">restaurants</a></li>
+        <li *ngIf="(isLoggedIn$ | async)" class="nav-item"><a routerLink="/wirt">wirt management</a></li>
+    </ul>
+    <ul id="account-navigation" class="navigation">
+        <li *ngIf="!(isLoggedIn$ | async)" class="nav-item"><a routerLink="/login">login</a></li>
+        <li *ngIf="!(isLoggedIn$ | async)" class="nav-item"><a routerLink="/register">register</a></li>
+        <li class="nav-item has-subnav"  *ngIf="isLoggedIn$ | async">
+            <a class="subnav-trigger" href="#">Account</a>
+            <ul class="nav-subnav">
+                <li class="nav-item"><span class="welcome">Willkommen, {{ (user$ | async)?.name }}</span></li>
+                <li class="nav-item"><a href="#" (click)="logout()">log out</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>

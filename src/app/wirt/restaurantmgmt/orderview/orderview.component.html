@@ -1,0 +1,6 @@
+<div>
+    <mat-card *ngFor="let o of orders" style="margin: 3px;">
+        <mat-card-subtitle>{{o.price}}</mat-card-subtitle>
+    </mat-card>
+    <button mat-button (click)="exit()">Zurück</button>
+</div>

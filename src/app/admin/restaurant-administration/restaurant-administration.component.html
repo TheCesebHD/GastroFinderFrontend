@@ -1,0 +1,12 @@
+<div>
+    <p>Restaurant Overview</p>
+    <input placeholder="Restaurant Name" [(ngModel)]="filter">
+    <mat-card *ngFor="let restaurant of restaurants | restaurantSearch:filter">
+        <mat-card-title>{{restaurant.name}}</mat-card-title>
+        <mat-card-subtitle>{{restaurant.address}}</mat-card-subtitle>
+        <mat-card-actions>
+            <button (click)="displayEditRestaurantAdmin(restaurant)">bearbeiten</button>
+        </mat-card-actions>
+    </mat-card>
+    <app-edit-restaurant-admin [restaurant]="restaurant" (onSubmit)="hideEditRestaurantAdmin()" *ngIf="showEditRestaurantAdmin"></app-edit-restaurant-admin>
+</div>

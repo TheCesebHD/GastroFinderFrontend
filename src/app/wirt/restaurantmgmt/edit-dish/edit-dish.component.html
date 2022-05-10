@@ -1,0 +1,18 @@
+<form [formGroup]="form" (submit)="submit()">
+    <mat-form-field>
+        <input matInput formControlName="name" type="text" placeholder="Name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput formControlName="price" type="number" placeholder="Preis" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <textarea name="beschreibung" id="" cols="50" rows="5" matInput formControlName="description" placeholder="Beschreibung" required></textarea>
+    </mat-form-field>
+    <br>
+    <mat-checkbox formControlName="delivery">Lieferung möglich</mat-checkbox>
+    
+    <button mat-raised-button [disabled]="form.invalid" type="submit">Speichern</button>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+</form>

@@ -1,0 +1,20 @@
+<div>
+    <mat-card *ngFor="let d of AmountDishes" style="margin: 3em">
+        <mat-card-title>{{d.dish.name}}</mat-card-title>
+        <mat-card-subtitle>{{d.dish.description}}</mat-card-subtitle>
+        <mat-card-subtitle>{{d.dish.price}}€</mat-card-subtitle>
+        <button (click)="removeAmountDish(d)">-</button>
+        <input mat-input [(ngModel)]="d.amount" disabled>
+        <button (click)="addAmountDish(d)">+</button>
+    </mat-card>
+
+    <p>your order</p>
+
+    <div *ngFor="let d of AmountDishes">
+        <p *ngIf="d.amount > 0">{{d.amount}} {{d.dish.name}}</p>
+    </div>
+    <p>Preis: {{calculatePrice()}}€</p>
+    <p>Comment:</p>
+    <textarea [(ngModel)]="comment"></textarea>
+    <button (click)="submit()">submit order</button>
+</div>

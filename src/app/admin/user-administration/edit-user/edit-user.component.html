@@ -1,0 +1,16 @@
+<form [formGroup]="form" (submit)="submit()" class="form-wrapper">
+    <mat-form-field>
+        <input matInput formControlName="name" placeholder="name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput formControlName="email" placeholder="email">
+    </mat-form-field>
+
+    <mat-checkbox formControlName="isWirt">Wirt</mat-checkbox>
+
+    <mat-checkbox formControlName="isAdmin">Administrator</mat-checkbox>
+
+    <button type="submit">Speichern</button>
+    <button (click)="cancel()">Abbrechen</button>
+</form>

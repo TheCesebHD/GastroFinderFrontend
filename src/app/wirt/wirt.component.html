@@ -1,0 +1,13 @@
+<div>
+    <h2>Ihre Restaurants</h2>
+
+    <mat-card *ngFor="let r of restaurants" style="margin: 3em">
+        <mat-card-title>{{r.name}}</mat-card-title>
+        <mat-card-subtitle>{{r.address}}</mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-raised-button (click)="navToRestaurant(r)">bearbeiten</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <p>irgendwelche relevanten daten</p>
+</div>

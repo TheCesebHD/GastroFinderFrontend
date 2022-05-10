@@ -1,0 +1,13 @@
+<div>
+    <h1>Unsere Restaurants</h1>
+    <input placeholder="name" [(ngModel)]="filter">
+    <mat-card *ngFor="let r of restaurants | restaurantSearch: filter" style="margin: 3em">
+        <mat-card-title>{{r.name}}</mat-card-title>
+        <mat-card-subtitle>{{r.address}}</mat-card-subtitle>
+        <mat-card-subtitle>{{r.phoneNumber}}</mat-card-subtitle>
+        <mat-card-actions>
+            <a mat-raised-button [routerLink]="['/order', r.id]">Bestellen</a>
+            <a mat-raised-button>Zum Restaurant</a>
+        </mat-card-actions>
+    </mat-card>
+</div>
